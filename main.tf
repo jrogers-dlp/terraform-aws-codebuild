@@ -107,13 +107,13 @@ resource "aws_codebuild_project" "cb_project" {
       report_build_status = lookup(source.value, "report_build_status")
 
       # Auth
-      dynamic "auth" {
-        for_each = length(lookup(source.value, "auth")) == 0 ? [] : [lookup(source.value, "auth")]
-        content {
-          type     = auth.value.type
-          resource = auth.value.resource
-        }
-      }
+      # dynamic "auth" {
+      #   for_each = length(lookup(source.value, "auth")) == 0 ? [] : [lookup(source.value, "auth")]
+      #   content {
+      #     type     = auth.value.type
+      #     resource = auth.value.resource
+      #   }
+      # }
 
       # Git Submodules Config
       dynamic "git_submodules_config" {
@@ -139,13 +139,13 @@ resource "aws_codebuild_project" "cb_project" {
       source_identifier   = lookup(secondary_sources.value, "source_identifier", null)
 
       # Auth
-      dynamic "auth" {
-        for_each = length(lookup(secondary_sources.value, "auth")) == 0 ? [] : [lookup(secondary_sources.value, "auth")]
-        content {
-          type     = auth.value.type
-          resource = auth.value.resource
-        }
-      }
+      # dynamic "auth" {
+      #   for_each = length(lookup(secondary_sources.value, "auth")) == 0 ? [] : [lookup(secondary_sources.value, "auth")]
+      #   content {
+      #     type     = auth.value.type
+      #     resource = auth.value.resource
+      #   }
+      # }
 
       # Git Submodules Config
       dynamic "git_submodules_config" {
